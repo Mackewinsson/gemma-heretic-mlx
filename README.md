@@ -9,7 +9,8 @@ Model: [deadbydawn101/gemma-4-E2B-Heretic-Uncensored-mlx-4bit](https://huggingfa
 ```bash
 cd ~/Projects/gemma-heretic-mlx
 ./setup.sh    # once
-./chat.sh     # terminal chat
+./viral.sh    # bold viral-script chat (recommended)
+./chat.sh     # plain terminal chat
 ```
 
 ## Scripts
@@ -17,9 +18,21 @@ cd ~/Projects/gemma-heretic-mlx
 | Script | What it does |
 |--------|----------------|
 | `./setup.sh` | Creates `venv`, installs `mlx-vlm`, applies Gemma 4 load fix |
-| `./chat.sh` | Interactive terminal chat |
+| `./viral.sh` | **Viral script mode** — system prompt + temperature 0.95 + `/harder` |
+| `./chat.sh` | Interactive terminal chat (neutral, no system prompt) |
 | `./server.sh` | OpenAI-compatible API on port 8080 (for Cursor) |
 | `./ui.sh` | Web chat UI in browser (installs Gradio on first run) |
+
+### Viral script mode
+
+Edit the system prompt in `prompts/viral-system.txt`. Tune in `config.env`:
+
+```bash
+VIRAL_TEMPERATURE=0.95   # try 1.0 for maximum edge
+VIRAL_MAX_TOKENS=1024
+```
+
+Commands in chat: `/harder` (sharpen last reply), `/clear`, `/exit`.
 
 ## Cursor
 
